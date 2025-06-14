@@ -1,0 +1,235 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerente</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/global/Reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/user-css/gerente.css' %}" />
+  </head>
+  <body>
+    <main class="main-container">
+      <div class="nav-container">
+        <nav>
+          <ul>
+            <li class="nav-titulo"><h3>Sistema de gerenciamento</h3></li>
+            <li class="nav-usuario"><p>Bem-vindo, gerente fulano</p></li>
+          </ul>
+          <div class="logout">
+            <a href="#">Logout</a>
+          </div>
+        </nav>
+      </div>
+
+      <section class="pagina-titulo-container">
+        <h1>Página do Gerente</h1>
+        <p>Acesso exclusivo para gestão e controle do sistema.</p>
+      </section>
+
+      <input
+        type="radio"
+        name="abas"
+        id="aba-visao-geral"
+        class="input-aba"
+        checked
+      />
+      <input
+        type="radio"
+        name="abas"
+        id="aba-planejar-refatoracoes"
+        class="input-aba"
+      />
+      <input
+        type="radio"
+        name="abas"
+        id="aba-logs-atividades"
+        class="input-aba"
+      />
+      <input
+        type="radio"
+        name="abas"
+        id="aba-gerenciar-usuarios"
+        class="input-aba"
+      />
+      <input
+        type="radio"
+        name="abas"
+        id="aba-visualizar-relatorios"
+        class="input-aba"
+      />
+      <input
+        type="radio"
+        name="abas"
+        id="aba-config-seguranca"
+        class="input-aba"
+      />
+
+      <div class="botoes-abas-container">
+        <label for="aba-visao-geral" class="label-aba">
+          <span class="icone-container"><i class="fas fa-chart-line"></i></span>
+          <span class="texto-container">
+            <h3>Visão Geral do Sistema</h3>
+            <p>Acesso aos relatórios gerais</p>
+          </span>
+        </label>
+        <label for="aba-planejar-refatoracoes" class="label-aba">
+          <span class="icone-container"
+            ><i class="fas fa-screwdriver-wrench"></i
+          ></span>
+          <span class="texto-container">
+            <h3>Planejar Refatorações</h3>
+            <p>Planejar e atribuir tarefas</p>
+          </span>
+        </label>
+        <label for="aba-logs-atividades" class="label-aba">
+          <span class="icone-container"
+            ><i class="fas fa-clock-rotate-left"></i
+          ></span>
+          <span class="texto-container">
+            <h3>Logs de Atividades</h3>
+            <p>Visualizar histórico completo</p>
+          </span>
+        </label>
+        <label for="aba-gerenciar-usuarios" class="label-aba">
+          <span class="icone-container"><i class="fas fa-user-cog"></i></span>
+          <span class="texto-container">
+            <h3>Gerenciar Usuários</h3>
+            <p>Criar, editar, remover usuários</p>
+          </span>
+        </label>
+        <label for="aba-visualizar-relatorios" class="label-aba">
+          <span class="icone-container"><i class="fas fa-file-lines"></i></span>
+          <span class="texto-container">
+            <h3>Visualizar Relatórios</h3>
+            <p>Relatórios de testes, refatorações</p>
+          </span>
+        </label>
+        <label for="aba-config-seguranca" class="label-aba">
+          <span class="icone-container"
+            ><i class="fas fa-shield-halved"></i
+          ></span>
+          <span class="texto-container">
+            <h3>Configurações de Segurança</h3>
+            <p>Alterar regras e permissões</p>
+          </span>
+        </label>
+      </div>
+
+      <div class="paineis-conteudo-container">
+        <div class="conteudo-aba" id="conteudo-visao-geral">
+          <h2>Visão Geral do Sistema</h2>
+          <p>
+            Esta seção apresenta um resumo do estado atual do sistema, incluindo
+            métricas chave e alertas importantes.
+          </p>
+        </div>
+
+        <div class="conteudo-aba" id="conteudo-planejar-refatoracoes">
+          <h2>Planejar Refatorações</h2>
+          <p>
+            Utilize o formulário abaixo para criar e atribuir novas tarefas de
+            refatoração para a equipe de desenvolvimento.
+          </p>
+          <form action="#" method="post">
+            <div>
+              <label for="ref-titulo">Título da Refatoração:</label
+              ><input type="text" id="ref-titulo" name="ref-titulo" />
+            </div>
+            <div>
+              <label for="ref-descricao">Descrição:</label
+              ><textarea
+                id="ref-descricao"
+                name="ref-descricao"
+                rows="4"
+              ></textarea>
+            </div>
+            <div>
+              <label for="ref-dev">Atribuir a:</label
+              ><input type="text" id="ref-dev" name="ref-dev" />
+            </div>
+            <div><button type="submit">Salvar Tarefa</button></div>
+          </form>
+        </div>
+
+        <div class="conteudo-aba" id="conteudo-logs-atividades">
+          <h2>Logs de Atividades</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Coluna1</th>
+                <th>Coluna2</th>
+                <th>Coluna3</th>
+                <th>Coluna4</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for usuario in usuarios %}
+              <tr>
+                <td data-label="Nome">{{ usuario.nome }}</td>
+                <td data-label="Email">{{ usuario.email }}</td>
+                <td data-label="Data de Criação">
+                  {{ usuario.data_criacao|date:"d/m/Y" }}
+                </td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="3">Nenhum log encontrado.</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="conteudo-aba" id="conteudo-gerenciar-usuarios">
+          <h2>Gerenciar Usuários</h2>
+          <p>Adicione novos usuários ou gerencie os existentes.</p>
+          <div class="lista-usuarios-gerenciamento">
+            <h4>Usuários Cadastrados:</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Senha</th>
+                  <th>Usuario</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                  <td data-label="Nome">{{ usuario.nome }}</td>
+                  <td data-label="Email">{{ usuario.email }}</td>
+                  <td data-label="Senha">{{ usuario.senha }}</td>
+                  <td data-label="Usuario">{{ usuario.Usuario }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                  <td colspan="3">Nenhum log encontrado.</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="conteudo-aba" id="conteudo-visualizar-relatorios">
+          <h2>Visualizar Relatórios Específicos</h2>
+          <p>
+            Acesse relatórios detalhados sobre testes de software, progresso de
+            refatorações, utilização de recursos e mais.
+          </p>
+        </div>
+
+        <div class="conteudo-aba" id="conteudo-config-seguranca">
+          <h2>Configurações de Segurança</h2>
+          <p>Gerencie as políticas de segurança.</p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

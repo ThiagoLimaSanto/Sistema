@@ -1,0 +1,270 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página do Tester</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/global/Reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/user-css/Tester.css' %}" />
+  </head>
+  <body>
+    <main class="main-container">
+      <div class="nav-container">
+        <nav>
+          <ul>
+            <li class="nav-titulo"><h3>Sistema de gerenciamento</h3></li>
+            <li class="nav-usuario"><p>Bem-vindo, Tester fulano</p></li>
+          </ul>
+          <div class="logout">
+            <a href="#">Logout</a>
+          </div>
+        </nav>
+      </div>
+
+      <section class="pagina-titulo-container">
+        <h1>Página do Tester</h1>
+        <p>Acesso às tarefas e funções de teste.</p>
+      </section>
+
+      <input
+        type="radio"
+        name="tester-abas"
+        id="tester-aba-executar"
+        class="input-aba"
+        checked
+      />
+      <input
+        type="radio"
+        name="tester-abas"
+        id="tester-aba-planejar"
+        class="input-aba"
+      />
+      <input
+        type="radio"
+        name="tester-abas"
+        id="tester-aba-aprovados"
+        class="input-aba"
+      />
+      <input
+        type="radio"
+        name="tester-abas"
+        id="tester-aba-relatorios"
+        class="input-aba"
+      />
+      <input
+        type="radio"
+        name="tester-abas"
+        id="tester-aba-pendencia"
+        class="input-aba"
+      />
+
+      <div class="botoes-abas-container">
+        <label for="tester-aba-executar" class="label-aba">
+          <span class="icone-container"><i class="fas fa-vial"></i></span>
+          <span class="texto-container">
+            <h3>Executar Testes</h3>
+            <p>Executar casos de teste atribuídos</p>
+          </span>
+        </label>
+
+        <label for="tester-aba-planejar" class="label-aba">
+          <span class="icone-container"><i class="fas fa-lightbulb"></i></span>
+          <span class="texto-container">
+            <h3>Planejar Nova Refatoração</h3>
+            <p>Criar e Planejar uma nova refatoração</p>
+          </span>
+        </label>
+
+        <label for="tester-aba-aprovados" class="label-aba">
+          <span class="icone-container"
+            ><i class="fas fa-check-circle"></i
+          ></span>
+          <span class="texto-container">
+            <h3>Testes Aprovados</h3>
+            <p>Visualizar casos de teste aprovados</p>
+          </span>
+        </label>
+
+        <label for="tester-aba-relatorios" class="label-aba">
+          <span class="icone-container"
+            ><i class="fas fa-file-contract"></i
+          ></span>
+          <span class="texto-container">
+            <h3>Relatórios</h3>
+            <p>Adicionar anotações aos testes executados</p>
+          </span>
+        </label>
+
+        <label for="tester-aba-pendencia" class="label-aba">
+          <span class="icone-container"
+            ><i class="fas fa-hourglass-half"></i
+          ></span>
+          <span class="texto-container">
+            <h3>Código com Pendência</h3>
+            <p>Ver código que requer revisão ou teste</p>
+          </span>
+        </label>
+      </div>
+
+      <div class="paineis-conteudo-container">
+        <div class="conteudo-aba" id="conteudo-tester-executar">
+          <h2>Executar Casos de Teste</h2>
+          <p>
+            A seguir, a lista de casos de teste que precisam ser executados para
+            a sprint atual.
+          </p>
+          <table class="tabela-testes">
+            <thead>
+              <tr>
+                <th>ID do Teste</th>
+                <th>Funcionalidade</th>
+                <th>Status</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>TC-001</td>
+                <td>Login de Usuário com credenciais válidas</td>
+                <td><span class="status status-pendente">Pendente</span></td>
+                <td><a href="#">Executar</a></td>
+              </tr>
+              <tr>
+                <td>TC-002</td>
+                <td>Cadastro de novo produto no catálogo</td>
+                <td><span class="status status-pendente">Pendente</span></td>
+                <td><a href="#">Executar</a></td>
+              </tr>
+              <tr>
+                <td>TC-003</td>
+                <td>Cálculo de frete para a região Sudeste</td>
+                <td><span class="status status-aprovado">Aprovado</span></td>
+                <td><a href="#">Ver detalhes</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="conteudo-aba" id="conteudo-tester-planejar">
+          <h2>Sugerir Refatoração por Falha em Teste</h2>
+          <p>
+            Se um teste falhou repetidamente devido a um problema no código,
+            sugira uma refatoração.
+          </p>
+          <form action="#" method="post">
+            <div>
+              <label for="ref-sugestao-titulo">Título da Sugestão:</label
+              ><input
+                type="text"
+                id="ref-sugestao-titulo"
+                name="ref-sugestao-titulo"
+              />
+            </div>
+            <div>
+              <label for="ref-sugestao-desc"
+                >Descrição do Problema Encontrado:</label
+              ><textarea
+                id="ref-sugestao-desc"
+                name="ref-sugestao-desc"
+                rows="5"
+              ></textarea>
+            </div>
+            <div><button type="submit">Enviar Sugestão</button></div>
+          </form>
+        </div>
+
+        <div class="conteudo-aba" id="conteudo-tester-aprovados">
+          <h2>Histórico de Testes Aprovados</h2>
+          <p>
+            Registro de todos os casos de teste que foram executados e aprovados
+            com sucesso.
+          </p>
+          <table class="tabela-testes">
+            <thead>
+              <tr>
+                <th>ID do Teste</th>
+                <th>Funcionalidade</th>
+                <th>Data de Aprovação</th>
+                <th>Tester</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>TC-003</td>
+                <td>Cálculo de frete para a região Sudeste</td>
+                <td>06/06/2025</td>
+                <td>Tester Fulano</td>
+              </tr>
+              <tr>
+                <td>TC-005</td>
+                <td>Validação de cupom de desconto</td>
+                <td>05/06/2025</td>
+                <td>Tester Fulano</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="conteudo-aba" id="conteudo-tester-relatorios">
+          <h2>Gerar Relatório de Teste</h2>
+          <p>
+            Documente os resultados de um ciclo de testes, incluindo bugs
+            encontrados e anotações gerais.
+          </p>
+          <form action="#" method="post">
+            <div>
+              <label for="rel-ciclo">Ciclo de Teste (ex: Sprint 24):</label
+              ><input type="text" id="rel-ciclo" name="rel-ciclo" />
+            </div>
+            <div>
+              <label for="rel-resumo">Resumo dos Resultados:</label
+              ><textarea id="rel-resumo" name="rel-resumo" rows="5"></textarea>
+            </div>
+            <div><button type="submit">Salvar Relatório</button></div>
+          </form>
+        </div>
+
+        <div class="conteudo-aba" id="conteudo-tester-pendencia">
+          <h2>Código Pendente para Teste</h2>
+          <p>
+            Funcionalidades desenvolvidas que foram liberadas e aguardam a
+            execução dos seus testes de validação.
+          </p>
+          <table class="tabela-testes">
+            <thead>
+              <tr>
+                <th>Funcionalidade</th>
+                <th>Desenvolvedor</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  [Feature/PagamentoPix] - Implementação do pagamento via PIX
+                </td>
+                <td>Dev Ciclano</td>
+                <td>
+                  <span class="status status-pendente">Aguardando Teste</span>
+                </td>
+              </tr>
+              <tr>
+                <td>[Fix/Bug-145] - Correção no cálculo de impostos</td>
+                <td>Dev Beltrano</td>
+                <td>
+                  <span class="status status-pendente">Aguardando Teste</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

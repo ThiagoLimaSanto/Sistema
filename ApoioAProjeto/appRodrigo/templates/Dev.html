@@ -1,0 +1,178 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página do Desenvolvedor</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/global/Reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/user-css/dev.css' %}" />
+  </head>
+  <body>
+    <main class="main-container">
+      <div class="nav-container">
+        <nav>
+          <ul>
+            <li class="nav-titulo"><h3>Sistema de gerenciamento</h3></li>
+            <li class="nav-usuario"><p>Bem-vindo, Dev fulano</p></li>
+          </ul>
+          <div class="logout">
+            <a href="#">Logout</a>
+          </div>
+        </nav>
+      </div>
+
+      <section class="pagina-titulo-container">
+        <h1>Página do desenvolvedor</h1>
+        <p>Acesso às tarefas e funções de desenvolvimento.</p>
+      </section>
+
+      <input
+        type="radio"
+        name="dev-abas"
+        id="dev-aba-tarefas"
+        class="input-aba"
+        checked
+      />
+      <input
+        type="radio"
+        name="dev-abas"
+        id="dev-aba-planejar"
+        class="input-aba"
+      />
+      <input
+        type="radio"
+        name="dev-abas"
+        id="dev-aba-historico"
+        class="input-aba"
+      />
+      <input
+        type="radio"
+        name="dev-abas"
+        id="dev-aba-falhas"
+        class="input-aba"
+      />
+      <input
+        type="radio"
+        name="dev-abas"
+        id="dev-aba-pendencia"
+        class="input-aba"
+      />
+
+      <div class="botoes-abas-container">
+        <label for="dev-aba-tarefas" class="label-aba">
+          <span class="icone-container"><i class="fas fa-tasks"></i></span>
+          <span class="texto-container">
+            <h3>Minhas Tarefas de Refatoração</h3>
+            <p>Visualizar e gerenciar tarefas atribuídas</p>
+          </span>
+        </label>
+
+        <label for="dev-aba-planejar" class="label-aba">
+          <span class="icone-container"><i class="fas fa-lightbulb"></i></span>
+          <span class="texto-container">
+            <h3>Planejar Nova Refatoração</h3>
+            <p>Criar, planejar uma nova refatoração</p>
+          </span>
+        </label>
+
+        <label for="dev-aba-historico" class="label-aba">
+          <span class="icone-container"><i class="fas fa-history"></i></span>
+          <span class="texto-container">
+            <h3>histórico de refatorações</h3>
+            <p>Visualizar histórico das refatorações</p>
+          </span>
+        </label>
+
+        <label for="dev-aba-falhas" class="label-aba">
+          <span class="icone-container"><i class="fas fa-bug"></i></span>
+          <span class="texto-container">
+            <h3>Relatórios de Falhas</h3>
+            <p>Visualizar relatórios de falhas encontradas</p>
+          </span>
+        </label>
+
+        <label for="dev-aba-pendencia" class="label-aba">
+          <span class="icone-container"
+            ><i class="fas fa-file-circle-question"></i
+          ></span>
+          <span class="texto-container">
+            <h3>Código com Pendência</h3>
+            <p>ver código que requer revisão ou teste</p>
+          </span>
+        </label>
+      </div>
+
+      <div class="paineis-conteudo-container">
+        <div class="conteudo-aba" id="conteudo-dev-tarefas">
+          <h2>Minhas Tarefas de Refatoração</h2>
+          <p>Lista de tarefas de refatoração atribuídas a você</p>
+        </div>
+
+        <div class="conteudo-aba" id="conteudo-dev-planejar">
+          <h2>Planejar Nova Refatoração</h2>
+          <p>
+            Descreva uma refatoração necessária para que o gerente possa
+            analisar e atribuir.
+          </p>
+          <form action="#" method="post">
+            <div>
+              <label for="ref-titulo-dev">Título da Sugestão:</label
+              ><input type="text" id="ref-titulo-dev" name="ref-titulo-dev" />
+            </div>
+            <div>
+              <label for="ref-descricao-dev">Justificativa Técnica:</label
+              ><textarea
+                id="ref-descricao-dev"
+                name="ref-descricao-dev"
+                rows="5"
+              ></textarea>
+            </div>
+            <div><button type="submit">Enviar Sugestão</button></div>
+          </form>
+        </div>
+
+        <div class="conteudo-aba" id="conteudo-dev-historico">
+          <h2>Histórico de Refatorações</h2>
+          <p>
+            Registro de todas as tarefas de refatoração concluídas por você e
+            pela equipe.
+          </p>
+          <ul>
+            <li>
+              <strong>Concluída em 01/06/2025:</strong> Testando historico.
+            </li>
+          </ul>
+        </div>
+
+        <div class="conteudo-aba" id="conteudo-dev-falhas">
+          <h2>Relatórios de Falhas</h2>
+          <p>
+            Relatórios gerados automaticamente sobre falhas e exceções que podem
+            indicar necessidade de refatoração.
+          </p>
+          <ul>
+            <li>
+              <strong>Falha Crítica (10x hoje):</strong> NullPointerException
+            </li>
+          </ul>
+        </div>
+
+        <div class="conteudo-aba" id="conteudo-dev-pendencia">
+          <h2>Código com Pendência</h2>
+          <ul>
+            <li>
+              <strong>Revisão Solicitada:</strong> [Feature/LoginSocial] -
+              Adiciona login com Google
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
